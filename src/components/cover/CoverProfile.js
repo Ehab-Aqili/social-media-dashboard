@@ -1,6 +1,5 @@
 import React from "react";
 import "../../css/index.css";
-import userData from "../../data/data";
 import ImageUser from "../cache_image/ImageUser";
 import Buttons from "../btn/Buttons";
 import { PathIcons } from "../../util/PathIcons";
@@ -9,8 +8,8 @@ import { useState } from "react";
 import PopupFriends from "../popup/PopupFriends";
 import { useTranslation } from "react-i18next";
 import { KeyLang } from "../../util/KeyLang";
-const CoverProfile = ({ id }) => {
-  const data = userData[id];
+const CoverProfile = ({ sendData }) => {
+  const data = sendData;
   const [buttonPopup, setButtonPopup] = useState(false);
   const { t } = useTranslation();
 
@@ -24,17 +23,17 @@ const CoverProfile = ({ id }) => {
         <img className="cover_profile" src={data.imageCover} alt="cover" />
         <ImageUser
           image={data.image}
-          name={data.name}
+          name={data.username}
           classImage={"image_profile"}
         />
         <div className="bottom_cover mt-4 px-5">
-          <div className="user_name fs-3">{`${data.firstName} ${data.lastName}`}</div>
+          <div className="user_name fs-3">{data.username}</div>
 
           <div className="btn_cover pt-2">
             <div
               className="fs-6 friends-profile"
               onClick={() => setButtonPopup(true)}
-            >{`${250} ${t(KeyLang.friend)}`}</div>
+            >{`${data.friends.length} ${t(KeyLang.friend)}`}</div>
             {/* Popup */}
             <PopupFriends
               trigger={buttonPopup}

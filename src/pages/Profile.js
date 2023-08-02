@@ -12,7 +12,8 @@ const Profile = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
-  const url = "http://localhost:4000/users";
+  const getId = sessionStorage.getItem("Id")
+  const url = `http://localhost:8080/user/profile/${getId}`;
   function localData() {
     const value = JSON.parse(localStorage.getItem("user"));
     if (value.status === "login") {
@@ -33,7 +34,7 @@ const Profile = () => {
         <div className="bodyAllPages">
           <div className="px-lg-4 mx-lg-3">
             <NavBar />
-            <CoverProfile id={index} />
+            <CoverProfile sendData={data} />
           </div>
           <div className="row mt-3 gap-2 d-flex justify-content-center">
             <div className="col-xl-3 col-lg-4 d-xl-block d-lg-block d-md-none d-sm-none">

@@ -24,15 +24,16 @@ const InformationForm = () => {
     const reader = new FileReader();
 
     reader.onload = async function (e) {
-      const img = e.target.result;
-      const sendData = { ...data, ...emailPass, image: img };
-
-      const url = "http://localhost:4000/users";
+      // const img = e.target.result;
+      // const id = data.id;
+      const sendData = { ...data, ...emailPass };
+      const url = "http://localhost:8080/user/signup";
       try {
         const response = await axios.post(url, sendData);
         // Handle success response
-        console.log(response.data);
-
+        console.log(response.data.id);
+        const id = response.data.id;
+        sessionStorage.setItem("Id", id);
         // Redirect to the home page
         const userData = { ...emailPass, status: "login" };
         localStorage.setItem("user", JSON.stringify(userData));
