@@ -26,21 +26,31 @@ const InformationForm = () => {
     reader.onload = async function (e) {
       // const img = e.target.result;
       // const id = data.id;
-      const sendData = { ...data, ...emailPass};
+      const sendData = { ...data, ...emailPass };
       const url = "http://localhost:8080/user/signup";
       try {
-        const response = await axios.post(url, sendData);
+        const response = await axios.post(url, sendData).catch((err) => {
+          if (err && err.response) {
+            console.log("Error: ", err.response.data.message)///////////////////
+            // setError(err.response.data.message)
+          }
+        })
+        if (response && response.data) {
+          console.log("register Done")
+          navigate("/login");
+        }
         // Handle success response
-        console.log(response.data);
-        const id = response.data._id;
-        const user = response.data;
-        sessionStorage.setItem("Id", id);
-        sessionStorage.setItem("user", JSON.stringify(user));
+        // console.log(response.data);
+        // const id = response.data._id;
+        // const user = response.data;
+        // sessionStorage.setItem("Id", id);
+        // sessionStorage.setItem("user", JSON.stringify(user));
 
         // Redirect to the home page
-        const userData = { ...emailPass, status: "login" };
-        localStorage.setItem("user", JSON.stringify(userData));
-        navigate("/profile", { state: { email: emailPass.email } });
+        // const userData = { ...emailPass, status: "login" };
+        // localStorage.setItem("user", JSON.stringify(userData));
+        // console.log("register Done")
+        // navigate("/login");
       } catch (error) {
         // Handle error
         console.error(error);

@@ -7,23 +7,28 @@ import CardMightKnow from "../components/cards/CardMightKnow";
 import AddPost from "../components/posts/AddPost";
 import { useLocation } from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
+import { get } from "react-hook-form";
 
 const Profile = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const getId = sessionStorage.getItem("Id")
+  console.log(getId )
   const url = `http://localhost:8080/user/profile/${getId}`;
-  function localData() {
-    const value = JSON.parse(localStorage.getItem("user"));
-    if (value.status === "login") {
-      let email = value.email;
-      // console.log(email);
-      return email;
-    }
-  }
-  const email = localData();
-  const { data, loading, error } = useFetchData(url, email);
+
+  
+  // function localData() {
+  //   const value = JSON.parse(localStorage.getItem("user"));
+  //   if (value.status === "login") {
+  //     let email = value.email;
+  //     // console.log(email);
+  //     return email;
+  //   }
+  // }
+  // const email = localData();
+  // const { data, loading, error } = useFetchData(url, email);
+  const { data, loading, error } = useFetchData(url);
 
   let index = id == null ? "0" : id;
   return (

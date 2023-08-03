@@ -82,10 +82,10 @@ const NavBar = () => {
                   <SearchResultList
                     results={results}
                     setResult={setResults}
-                    // setValue={setValue}
+                  // setValue={setValue}
                   />
                 )}
-                {}
+                { }
               </div>
             </form>
             <span className="mx-3">{userData[0].name}</span>

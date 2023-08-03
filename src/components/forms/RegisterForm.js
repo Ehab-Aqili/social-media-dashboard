@@ -99,7 +99,7 @@ const RegisterForm = () => {
         </div>
         <div className={"text-center mt-4 text__sign"}>
           already have an account?
-          <Link to={"login.html"} className={"text-decoration-none"}>
+          <Link to={"/login"} className={"text-decoration-none"}>
             Sign In
           </Link>
         </div>

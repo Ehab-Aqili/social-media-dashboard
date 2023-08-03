@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const useFetchData = (url, email) => {
+const useFetchData = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -9,14 +9,14 @@ const useFetchData = (url, email) => {
     setLoading(true);
     setError(null);
 
-    const config = {
-      params: {
-        email: email,
-      },
-    };
+    // const config = {
+    //   params: {
+    //     email: email,
+    //   },
+    // };
 
     axios
-      .get(url, config)
+      .get(url)
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -25,7 +25,7 @@ const useFetchData = (url, email) => {
         setError(error.message);
         setLoading(false);
       });
-  }, [url, email]);
+  }, [url]);
   return { data, loading, error };
 };
 

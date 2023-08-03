@@ -10,8 +10,8 @@ import { useTranslation } from "react-i18next";
 import { KeyLang } from "../../util/KeyLang";
 
 // temporary sol. for the image 
-import cover from "C:/Users/Orange/Desktop/social-media-dashboard/src/assets/images/cover.jpg";
-import profilePic from "C:/Users/Orange/Desktop/social-media-dashboard/src/assets/images/img-user.png";
+import cover from "../../assets/images/cover.jpg";
+import profilePic from "../../assets/images/img-user.png";
 
 
 

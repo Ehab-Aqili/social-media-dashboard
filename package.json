@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:8080",
   "name": "social-media-dashboard",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "formik": "^2.4.3",
     "i18next": "^23.2.3",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",
@@ -23,7 +25,8 @@
     "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "serve": "json-server -w src/data/db.json --port 4000",

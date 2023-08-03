@@ -12,7 +12,7 @@ const CardActive = ({ id }) => {
   const data = JSON.parse(sessionStorage.getItem('user'))
   let newData = []
   newData.push(data)
-  console.log(newData[0].friends)
+  // console.log(newData[0].friends)
 
   return (
     <div className="cardactive">

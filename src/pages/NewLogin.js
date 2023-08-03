@@ -17,28 +17,44 @@ const LoginPage = () => {
   //   const handlePass = (e) => {
   //     setPass(e.target.value);
   //   };
-  const logIn = (e) => {
+  const logIn = async (e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email)
- 
-    try {
-      const response = axios
-        .post("http://127.0.0.1:8080/user/login", { email, password })
-        .catch((err) => {
-          if (err && err.response) {
-            console.log("Error: ", err.response.data.error);
-          }
-        });
 
+    const response = await fetch("/user/login", {
+      method: "POST",
+      headers: { "Content-Type": 'application/json' },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
 
-        console.log(response);
-        navigate("/profile");
-
-    } catch (err) {
-      console.log(err);
+    const json = await response.json()
+    if (!response.ok) {
+      console.log(json.error)
     }
+    if (response.ok) {
+      console.log(json)
+      // navigate("/profile");
+    }
+    // try {
+    //   const response = axios
+    //     .post("/user/login", { email, password })
+    //     .catch((err) => {
+    //       if (err && err.response) {
+    //         console.log("Error: ", err.response.data.error);
+    //       }
+    //     });
+
+    //   const json = await response.json()
+    //   console.log(json);
+
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (
@@ -116,7 +132,7 @@ const LoginPage = () => {
                 <button
                   type="submit"
                   className="btn btn-primary btn-custom-register text-center w-100"
-                  // onSubmit={logIn}
+                // onSubmit={logIn}
                 >
                   Sign in
                 </button>
