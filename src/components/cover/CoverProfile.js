@@ -8,6 +8,13 @@ import { useState } from "react";
 import PopupFriends from "../popup/PopupFriends";
 import { useTranslation } from "react-i18next";
 import { KeyLang } from "../../util/KeyLang";
+
+// temporary sol. for the image 
+import cover from "C:/Users/Orange/Desktop/social-media-dashboard/src/assets/images/cover.jpg";
+import profilePic from "C:/Users/Orange/Desktop/social-media-dashboard/src/assets/images/img-user.png";
+
+
+
 const CoverProfile = ({ sendData }) => {
   const data = sendData;
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -20,10 +27,10 @@ const CoverProfile = ({ sendData }) => {
   return (
     <div className="">
       <div className="container_profile">
-        <img className="cover_profile" src={data.imageCover} alt="cover" />
+        <img className="cover_profile" src={cover} alt="cover" />
         <ImageUser
-          image={data.image}
-          name={data.username}
+          image={profilePic}
+          name="Mohammad"
           classImage={"image_profile"}
         />
         <div className="bottom_cover mt-4 px-5">

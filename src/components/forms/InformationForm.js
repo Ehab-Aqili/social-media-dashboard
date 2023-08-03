@@ -31,9 +31,12 @@ const InformationForm = () => {
       try {
         const response = await axios.post(url, sendData);
         // Handle success response
-        console.log(response.data.id);
-        const id = response.data.id;
+        console.log(response.data);
+        const id = response.data._id;
+        const user = response.data;
         sessionStorage.setItem("Id", id);
+        sessionStorage.setItem("user", JSON.stringify(user));
+
         // Redirect to the home page
         const userData = { ...emailPass, status: "login" };
         localStorage.setItem("user", JSON.stringify(userData));

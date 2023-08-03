@@ -4,10 +4,11 @@ import "../../css/index.css";
 import userData from "../../data/data";
 import { useTranslation } from "react-i18next";
 import { KeyLang } from "../../util/KeyLang";
-function CardAbout({ id }) {
+function CardAbout() {
   const { t } = useTranslation();
 
-  const data = userData[id];
+  const data = JSON.parse(sessionStorage.getItem("user"));
+  // console.log(data);
   const styleItem = {
     borderBottom: "none",
   };
@@ -18,7 +19,7 @@ function CardAbout({ id }) {
       <ItemAbout classIcon={"fa-user"} text={data.gender} />
       <ItemAbout
         classIcon={"fa-cake-candles"}
-        text={`Born ${data.birthDate}`}
+        text={`Born ${data.birth_date}`}
       />
       <ItemAbout classIcon={"fa-location-dot"} text={data.location} />
       <ItemAbout classIcon={"fa-envelope"} text={data.email} />

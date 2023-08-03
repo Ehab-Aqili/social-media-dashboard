@@ -18,7 +18,7 @@ const ImageUser = ({
   };
   return (
     <div className={classImage}>
-      <img src={image} alt={name} style={imageStyle} />
+      <img src={image} alt="" style={imageStyle} />
     </div>
   );
 };

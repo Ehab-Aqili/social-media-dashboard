@@ -18,7 +18,7 @@ const Profile = () => {
     const value = JSON.parse(localStorage.getItem("user"));
     if (value.status === "login") {
       let email = value.email;
-      console.log(email);
+      // console.log(email);
       return email;
     }
   }
