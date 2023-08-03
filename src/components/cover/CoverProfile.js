@@ -16,7 +16,7 @@ import profilePic from "C:/Users/Orange/Desktop/social-media-dashboard/src/asset
 
 
 const CoverProfile = ({ sendData }) => {
-  const data = sendData;
+  const data = sendData;  
   const [buttonPopup, setButtonPopup] = useState(false);
   const { t } = useTranslation();
 

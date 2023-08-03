@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/login.css";
 import logoLogin from "../assets/icons/logo-login.svg";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
+  //   const [email, setEmail] = useState();
+  //   const [password, setPass] = useState();
+  // console.log(email)
+  // console.log(pass)
+  const navigate = useNavigate();
+  //   const handleEmail = (e) => {
+  //     setEmail(e.target.value);
+  //   };
+
+  //   const handlePass = (e) => {
+  //     setPass(e.target.value);
+  //   };
+  const logIn = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email)
+ 
+    try {
+      const response = axios
+        .post("http://127.0.0.1:8080/user/login", { email, password })
+        .catch((err) => {
+          if (err && err.response) {
+            console.log("Error: ", err.response.data.error);
+          }
+        });
+
+
+        console.log(response);
+        navigate("/profile");
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="align-items-center">
       <div className="container register__page mt-4">
@@ -14,7 +53,7 @@ const LoginPage = () => {
           {/* <!-- form --> */}
           <div className="col-lg-4 col-md-6 col-sm-12 register__form">
             <h4>Welcome back to the Link Up</h4>
-            <form id="login__form">
+            <form id="login__form" onSubmit={(e) => logIn(e)}>
               {/* <!-- ------------- *** Email *** ------------- --> */}
               <div className="mb-3 field email-field">
                 <label htmlFor="inputEmail" className="form-label">
@@ -26,6 +65,9 @@ const LoginPage = () => {
                   id="inputEmail"
                   placeholder="Enter your email"
                   aria-describedby="emailHelp"
+                  //   onChange={handleEmail}
+                  //   value={email}
+                  name="email"
                 />
                 <span className="error email-error">
                   Please enter a valid email
@@ -42,6 +84,9 @@ const LoginPage = () => {
                   className="form-control"
                   id="inputPassword"
                   placeholder="Enter your Password"
+                  //   onChange={handlePass}
+                  //   value={password}
+                  name="password"
                 />
                 <span className="error password-error">
                   Please enter your password
@@ -71,15 +116,16 @@ const LoginPage = () => {
                 <button
                   type="submit"
                   className="btn btn-primary btn-custom-register text-center w-100"
+                  // onSubmit={logIn}
                 >
                   Sign in
                 </button>
               </div>
               <div className="text-center mt-4 text__sign">
                 Don’t have an account?
-                <a href="register.html" className="text-decoration-none">
+                <Link href="register.html" className="text-decoration-none">
                   Signup Now
-                </a>
+                </Link>
               </div>
             </form>
           </div>

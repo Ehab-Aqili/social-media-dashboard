@@ -26,7 +26,7 @@ const InformationForm = () => {
     reader.onload = async function (e) {
       // const img = e.target.result;
       // const id = data.id;
-      const sendData = { ...data, ...emailPass };
+      const sendData = { ...data, ...emailPass};
       const url = "http://localhost:8080/user/signup";
       try {
         const response = await axios.post(url, sendData);

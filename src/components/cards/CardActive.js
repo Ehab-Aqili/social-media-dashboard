@@ -7,51 +7,34 @@ import { KeyLang } from "../../util/KeyLang";
 const CardActive = ({ id }) => {
   const { t } = useTranslation();
 
-  const data = userData[id];
-  const styleItem = {
-    borderBottom: "none",
-  };
+  // const[]
+
+  const data = JSON.parse(sessionStorage.getItem('user'))
+  let newData = []
+  newData.push(data)
+  console.log(newData[0].friends)
+
   return (
-    <div className="card__active">
+    <div className="cardactive">
       <h5 className="mb-3">{t(KeyLang.active)}</h5>
-      <ItemActive
-        image={data.image}
-        name={data.firstName}
-        last={data.lastName}
-        status={data.statusOnline}
-      />
-      <ItemActive
-        image={data.image}
-        name={data.firstName}
-        last={data.lastName}
-        status={data.statusOnline}
-      />
-      <ItemActive
-        image={data.image}
-        name={data.firstName}
-        last={data.lastName}
-        status={data.statusOnline}
-      />
-      <ItemActive
-        image={data.image}
-        name={data.firstName}
-        last={data.lastName}
-        status={data.statusOnline}
-        style={styleItem}
-      />
+
+      {
+        newData.map((user, index) => {
+          return (
+            <div className="ItemActive" style={{ borderBottom: "none", }} key={index}>
+              <ImageUser image="{user.image}" width={45} />
+              <div className="d-flex flex-column justify-content-center">
+                <span>{user.username}</span>
+                <span className="statuslogin">{user.status}</span>
+              </div>
+            </div>
+          )
+        })
+      }
+
     </div>
   );
 };
-function ItemActive(props) {
-  return (
-    <div className="ItemActive" style={props.style}>
-      <ImageUser image={props.image} width={45} />
-      <div className="d-flex flex-column justify-content-center">
-        <span>{`${props.name} ${props.last}`}</span>
-        <span className="status__login">{props.status}</span>
-      </div>
-    </div>
-  );
-}
+
 
 export default CardActive;

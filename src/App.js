@@ -5,11 +5,13 @@ import Profile from "./pages/Profile";
 import { useTranslation } from "react-i18next";
 import React, { useEffect } from "react";
 import cookies from "js-cookie";
-import LoginPage from "./pages/LoginPage";
+// import LoginPage from "./pages/LoginPage";
 import Register from "./pages/Register";
 import AddInformation from "./components/sign_up/AddInformation";
 import FormContextProvider from "./context/FormContext";
 import RegisterContextProvider from "./context/RegisterProvider";
+import NewLogin from "./pages/NewLogin"
+// import LoginPage from "./pages/LoginPage";
 const languages = [
   {
     code: "en",
@@ -35,23 +37,23 @@ function App() {
 
   // .*** --------------------return--------------------- ***
   return (
-    <FormContextProvider>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route
-          path="/"
-          element={
+    <Routes>
+      <Route path="/login" element={<NewLogin />} />
+      <Route
+        path="/"
+        element={
+          <FormContextProvider>
             <RegisterContextProvider>
               <Register />
             </RegisterContextProvider>
-          }
-        />
-        <Route path="/addInformation" element={<AddInformation />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        {/* <Route path="/profile" element={<Profile />} /> */}
-      </Routes>
-    </FormContextProvider>
+          </FormContextProvider>
+        }
+      />
+      <Route path="/addInformation" element={<AddInformation />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
+      {/* <Route path="/profile" element={<Profile />} /> */}
+    </Routes>
   );
 }
 
