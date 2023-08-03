@@ -7,34 +7,34 @@ import { KeyLang } from "../../util/KeyLang";
 const CardActive = ({ id }) => {
   const { t } = useTranslation();
 
-  // const[]
-
+  
   const data = JSON.parse(sessionStorage.getItem('user'))
   let newData = []
   newData.push(data)
   // console.log(newData[0].friends)
-
   return (
-    <div className="cardactive">
+    <div className="card__active">
       <h5 className="mb-3">{t(KeyLang.active)}</h5>
 
-      {
-        newData.map((user, index) => {
-          return (
-            <div className="ItemActive" style={{ borderBottom: "none", }} key={index}>
-              <ImageUser image="{user.image}" width={45} />
-              <div className="d-flex flex-column justify-content-center">
-                <span>{user.username}</span>
-                <span className="statuslogin">{user.status}</span>
-              </div>
-            </div>
-          )
-        })
-      }
+     { newData[0].friends.map((d, index) =>{
+      return (
 
+        <div className="ItemActive" style={{borderBottom: "none"}} key={index}>
+       <ImageUser  width={45} />
+       <div className="d-flex flex-column justify-content-center">
+         <span>{d.username}</span>
+         <span className="status__login">online</span>
+       </div>
+     </div>
+      )
+      })
+    }
+    
+     
     </div>
   );
 };
+
 
 
 export default CardActive;
