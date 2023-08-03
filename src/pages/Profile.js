@@ -5,7 +5,7 @@ import CardPost from "../components/posts/CardPost";
 import CardActive from "../components/cards/CardActive";
 import CardMightKnow from "../components/cards/CardMightKnow";
 import AddPost from "../components/posts/AddPost";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
 import { get } from "react-hook-form";
 import { useEffect } from "react";
@@ -13,11 +13,13 @@ import axios from "axios";
 
 const Profile = () => {
   const location = useLocation();
+  let navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   // const getId = sessionStorage.getItem("Id")
   const getUser = JSON.parse(sessionStorage.getItem("user"))
   console.log(getUser)
+  // console.log(getUser.token)
   // console.log(getId.user.username)
   // const token = sessionStorage.getItem('user').token
   const url = `http://localhost:8080/user/profile/${getUser.id}`;
@@ -39,17 +41,19 @@ const Profile = () => {
     // };
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/users/profile/${getUser.id}`, {
+        const response = await axios.get(`http://localhost:8080/user/profile/${getUser.id}`, {
           headers: {
-            // Authorization: `bearer ${getUser.token}`,
+            Authorization: `bearer ${getUser.token}`,
           }
         }).catch((err) => {
           if (err && err.response) {
-            console.log("Error: ", err.response.data.error)
-            // navigate('/login'); //redirect to the profile page
+            // console.log("Error: ", err.response.data.error)
+            console.log("Errorsss: ", err.response.data)
+            navigate('/login'); //redirect to the profile page
           }
         });
         if (response && response.data) {
+          console.log("response from profile id here bby")
           // setUserName(response.data.user.username);
           // setUserEmail(response.data.user.email);
           // console.log(typeof(response.data.userId))

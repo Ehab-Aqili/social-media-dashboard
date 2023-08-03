@@ -28,6 +28,20 @@ const LoginPage = () => {
       // console.log(response.data)
       // const id = response.data.userId;
       const user = response.data;
+
+
+      // birth_date : "2023-08-16"
+      // email : "hakamqadi@gmail.com"
+      // friends : []
+      // gender:"Male"
+      // id: "64cbb5f0928d1a0a0b18873c"
+      // location :"Amman"
+      // phone :"779073801"
+      // status :[]
+      // token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNiYjVmMDkyOGQxYTBhMGIxODg3M2MiLCJpYXQiOjE2OTEwOTI5NDB9.WNXR8C0T3nG1dmo_DZSWDH2rjTNqb_IZebVhU5tGdmY"
+      // username : "Hakam Haitham"
+
+
       // console.log("login", response.data)
       // sessionStorage.setItem("Id", id);
       sessionStorage.setItem("user", JSON.stringify(user));
