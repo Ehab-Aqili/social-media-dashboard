@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import userData from "../../data/data";
+// import userData from "../../data/data";
 import ImageUser from "../cache_image/ImageUser";
 import "./CardActive.css";
 import { useTranslation } from "react-i18next";
