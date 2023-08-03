@@ -8,16 +8,61 @@ import AddPost from "../components/posts/AddPost";
 import { useLocation } from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
 import { get } from "react-hook-form";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Profile = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
-  const getId = sessionStorage.getItem("Id")
-  console.log(getId )
-  const url = `http://localhost:8080/user/profile/${getId}`;
+  // const getId = sessionStorage.getItem("Id")
+  const getUser = JSON.parse(sessionStorage.getItem("user"))
+  console.log(getUser)
+  // console.log(getId.user.username)
+  // const token = sessionStorage.getItem('user').token
+  const url = `http://localhost:8080/user/profile/${getUser.id}`;
 
-  
+  useEffect(() => {
+    // const fetchUserData = async () => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:8080/users/profile/${location.state.id}`, {
+    //             headers: {
+    //                 Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Yjk4ZTBlYzQ1MzEyMjAyYmNjYzA5NiIsImlhdCI6MTY4OTg4NDQ4OH0.E2HIQFkWHpmWs70VJe7IgnT9z554STsIBZm56oKBT0E',
+    //             }
+    //         });
+    //         setUserName(response.data.user.username);
+    //         setUserEmail(response.data.user.email);
+    //         // console.log(response.data.data.username)
+    //     } catch (error) {
+    //         console.error('Error fetching user data:', error);
+    //     }
+    // };
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/users/profile/${getUser.id}`, {
+          headers: {
+            // Authorization: `bearer ${getUser.token}`,
+          }
+        }).catch((err) => {
+          if (err && err.response) {
+            console.log("Error: ", err.response.data.error)
+            // navigate('/login'); //redirect to the profile page
+          }
+        });
+        if (response && response.data) {
+          // setUserName(response.data.user.username);
+          // setUserEmail(response.data.user.email);
+          // console.log(typeof(response.data.userId))
+        }
+        // console.log(response.data.data.username)
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    fetchUserData();
+  })
+
+
   // function localData() {
   //   const value = JSON.parse(localStorage.getItem("user"));
   //   if (value.status === "login") {

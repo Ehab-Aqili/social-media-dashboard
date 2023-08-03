@@ -26,10 +26,12 @@ const LoginPage = () => {
     })
     if (response && response.data) {
       // console.log(response.data)
-      const id = response.data.userId;
+      // const id = response.data.userId;
       const user = response.data;
-      sessionStorage.setItem("Id", id);
+      // console.log("login", response.data)
+      // sessionStorage.setItem("Id", id);
       sessionStorage.setItem("user", JSON.stringify(user));
+      // sessionStorage.setItem("user", user);
       navigate('/profile'); //redirect to the profile page
       setError(null)
       formik.resetForm()
