@@ -23,7 +23,7 @@ const CoverProfile = ({ sendData }) => {
   buttonPopup
     ? (document.body.style.overflow = "hidden")
     : (document.body.style.overflow = "auto");
-
+ console.log(data)
   return (
     <div className="">
       <div className="container_profile">

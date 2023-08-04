@@ -16,9 +16,9 @@ const Profile = () => {
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   // const getId = sessionStorage.getItem("Id")
+  
+  
   const getUser = JSON.parse(sessionStorage.getItem("user"))
-
-
   console.log(getUser)
   // console.log(getUser.userId)
   // console.log(getUser.token)
@@ -46,11 +46,7 @@ const Profile = () => {
     // };
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/user/profile/${getUser.userId}`, {
-          headers: {
-            Authorization: `bearer ${getUser.token}`,
-          }
-        }).catch((err) => {
+        const response = await axios.get(`http://localhost:8080/user/profile/${getUser.userId}`).catch((err) => {
           if (err && err.response) {
             // console.log("Error: ", err.response.data.error)`
             console.log("Errorsss: ", err.response.data)
@@ -62,14 +58,16 @@ const Profile = () => {
           // setUserName(response.data.user.username);
           // setUserEmail(response.data.user.email);
           // console.log(typeof(response.data.userId))
+          
         }
+        const renderName = response.data.username
         // console.log(response.data.data.username)
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
     fetchUserData();
-  })
+  }, [])
 
 
   // function localData() {

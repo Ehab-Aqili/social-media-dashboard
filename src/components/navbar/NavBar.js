@@ -172,7 +172,7 @@ const NavBar = () => {
                   onPress={() => setSettingPopup(true)}
                 />
                 <PopupEditProfile
-                  trigger={settingPopup}
+                 t rigger={settingPopup}
                   setTrigger={setSettingPopup}
                   title={t(KeyLang.setting)}
                 >
