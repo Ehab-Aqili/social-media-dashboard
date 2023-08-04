@@ -48,7 +48,7 @@ const CardPost = ({ id }) => {
               </div>
             </div>
           );
-        })}
+        }).reverse()}
       </div>
     </div>
   );
