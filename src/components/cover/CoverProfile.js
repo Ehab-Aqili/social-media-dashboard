@@ -17,13 +17,14 @@ import profilePic from "../../assets/images/img-user.png";
 
 const CoverProfile = ({ sendData }) => {
   const data = sendData;  
+  console.log("C0ver" , data)
   const [buttonPopup, setButtonPopup] = useState(false);
   const { t } = useTranslation();
 
   buttonPopup
     ? (document.body.style.overflow = "hidden")
     : (document.body.style.overflow = "auto");
- console.log(data)
+//  console.log(data)
   return (
     <div className="">
       <div className="container_profile">
