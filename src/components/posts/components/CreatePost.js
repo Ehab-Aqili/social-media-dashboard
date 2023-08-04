@@ -39,10 +39,12 @@ const CreatePost = (props) => {
         if (err && err.response) {
           setError(err.response.data.message)
           setPostDone(null)
+          setPostContent('')
         }
       })
       if (response && response.data) {
         setPostDone(response.data.message.message)
+        setPostContent('')
         setError(null)
       }
     } catch (error) {
