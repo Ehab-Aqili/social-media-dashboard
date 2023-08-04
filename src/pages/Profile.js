@@ -94,7 +94,7 @@ const Profile = () => {
       {data && ( */}
         <div className="bodyAllPages">
           <div className="px-lg-4 mx-lg-3">
-            <NavBar />
+           
             <CoverProfile sendData={getUser} />
           </div>
           <div className="row mt-3 gap-2 d-flex justify-content-center">

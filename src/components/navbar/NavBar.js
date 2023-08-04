@@ -21,7 +21,7 @@ import axios from "axios";
 
 const NavBar = () => {
   const [results, setResults] = useState([]);
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
   const [settingPopup, setSettingPopup] = useState(false);
   const [langPopup, setLangPopup] = useState(false);
   const [themePopup, setThemePopup] = useState(false);
@@ -29,19 +29,29 @@ const NavBar = () => {
 
   const [input, setInput] = useState("");
 
+  // const handleInput = async (e) => {
+  //   setInput(e.target.value);
+  //   const response = await axios.get(`http://localhost:8080/user/search/${input}`).catch(
+  //     (error) => {
+  //       console.log(error)
+  //     }
+  //   )
+   
+  //   // console.log(response);
+  
+  //   setResults(response.data);
+  //   // console.log(results[0].username)
+  // };
   const handleInput = async (e) => {
     setInput(e.target.value);
-    const response = await axios.get(`http://localhost:8080/user/search/${input}`).catch(
-      (error) => {
-        console.log(error)
-      }
-    )
-   
-    // console.log(response);
-    setResults(response.data);
-    // console.log(results[0].username)
+    try {
+      const response = await axios.get(`http://localhost:8080/user/search/${e.target.value}`);
+      setResults(response.data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      setResults([]); 
+    }
   };
-
   return (
     <>
       <nav className="navbar navbar-expand-sm custom_nav">
@@ -101,11 +111,12 @@ const NavBar = () => {
                     type="search"
                     placeholder="Search"
                     onChange={handleInput}
+                    value={input}
                   ></input>
                 </div>
-
                 {results.map((search, index) => {
                   return (
+                    <div className="results-list p-2">
                     <Link
                       className="m-2 text-decoration-none"
                       // to={`/profile?id=${encodeURIComponent(result.id)}`}
@@ -117,6 +128,7 @@ const NavBar = () => {
                         <span className="result_search_name">{`${search.username}`}</span>
                       </div>
                     </Link>
+                </div>
                   );
                 })}
                 {/* {results && results.length > 0 && (
