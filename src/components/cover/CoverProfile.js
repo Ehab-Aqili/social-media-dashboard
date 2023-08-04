@@ -11,8 +11,9 @@ import { KeyLang } from "../../util/KeyLang";
 
 // temporary sol. for the image 
 import cover from "../../assets/images/cover.jpg";
-import profilePic from "../../assets/images/img-user.png";
-
+// import profilePic from "../../assets/images/img-user.png";
+const profilePic = sessionStorage.getItem('img')
+console.log(profilePic)
 
 
 const CoverProfile = ({ sendData }) => {
