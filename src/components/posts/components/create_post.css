@@ -42,3 +42,12 @@
   overflow: hidden;
   overflow-y: scroll;
 }
+
+.postDone{
+  margin: 8rem ;
+  color: green ;
+}
+.postFail{
+  margin: 9rem ;
+  color: red ;
+}
