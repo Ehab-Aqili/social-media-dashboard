@@ -6,8 +6,7 @@ import CardActive from "../components/cards/CardActive";
 import CardMightKnow from "../components/cards/CardMightKnow";
 import AddPost from "../components/posts/AddPost";
 import { useLocation, useNavigate } from "react-router-dom";
-import useFetchData from "../hooks/useFetchData";
-import { get } from "react-hook-form";
+// import useFetchData from "../hooks/useFetchData";
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -18,12 +17,18 @@ const Profile = () => {
   const id = searchParams.get("id");
   // const getId = sessionStorage.getItem("Id")
   const getUser = JSON.parse(sessionStorage.getItem("user"))
+
+
   console.log(getUser)
+  // console.log(getUser.userId)
   // console.log(getUser.token)
   // console.log(getId.user.username)
   // const token = sessionStorage.getItem('user').token
-  const url = `http://localhost:8080/user/profile/${getUser.id}`;
-
+  // const url = `http://localhost:8080/user/profile/${getUser.userId}`;
+  // if (getUser.id === null && url.err) {
+  //    console.log(url)
+  //   navigate('/login');
+  // }
   useEffect(() => {
     // const fetchUserData = async () => {
     //     try {
@@ -41,19 +46,19 @@ const Profile = () => {
     // };
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/user/profile/${getUser.id}`, {
+        const response = await axios.get(`http://localhost:8080/user/profile/${getUser.userId}`, {
           headers: {
             Authorization: `bearer ${getUser.token}`,
           }
         }).catch((err) => {
           if (err && err.response) {
-            // console.log("Error: ", err.response.data.error)
+            // console.log("Error: ", err.response.data.error)`
             console.log("Errorsss: ", err.response.data)
             navigate('/login'); //redirect to the profile page
           }
         });
         if (response && response.data) {
-          console.log("response from profile id here bby")
+          console.log("response from profile data here bby")
           // setUserName(response.data.user.username);
           // setUserEmail(response.data.user.email);
           // console.log(typeof(response.data.userId))
@@ -77,18 +82,20 @@ const Profile = () => {
   // }
   // const email = localData();
   // const { data, loading, error } = useFetchData(url, email);
-  const { data, loading, error } = useFetchData(url);
+  // const { data, loading, error } = useFetchData(url, getUser.token);
 
   let index = id == null ? "0" : id;
+
+  
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {/* {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
-      {data && (
+      {data && ( */}
         <div className="bodyAllPages">
           <div className="px-lg-4 mx-lg-3">
             <NavBar />
-            <CoverProfile sendData={data} />
+            <CoverProfile sendData={getUser} />
           </div>
           <div className="row mt-3 gap-2 d-flex justify-content-center">
             <div className="col-xl-3 col-lg-4 d-xl-block d-lg-block d-md-none d-sm-none">
@@ -115,7 +122,8 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      )}
+      )
+      {/* } */}
     </>
   );
 };
