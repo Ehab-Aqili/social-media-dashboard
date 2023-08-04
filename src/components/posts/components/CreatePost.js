@@ -11,7 +11,7 @@ import "./create_post.css";
 
 
 const myUser = JSON.parse(sessionStorage.getItem('user'))
-console.log(myUser.userId)
+// console.log(myUser.userId)
 
 
 

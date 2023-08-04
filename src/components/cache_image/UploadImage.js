@@ -21,6 +21,8 @@ const UploadImage = () => {
     }
   };
 
+
+
   useEffect(() => {
     if (image) {
       // Perform any additional actions with the uploaded image
@@ -28,6 +30,7 @@ const UploadImage = () => {
       //   const data = { image: image };
       setImages(image);
     }
+    // sessionStorage.setItem('img', URL.createObjectURL(image))
   }, [image]);
 
   return (
