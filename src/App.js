@@ -11,6 +11,7 @@ import FormContextProvider from "./context/FormContext";
 import RegisterContextProvider from "./context/RegisterProvider";
 // import NewLogin from "./pages/NewLogin"
 import LoginPage from "./pages/LoginPage";
+import NavBar from "./components/navbar/NavBar";
 const languages = [
   {
     code: "en",
@@ -36,6 +37,8 @@ function App() {
 
   // .*** --------------------return--------------------- ***
   return (
+    <>
+   
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route
@@ -48,11 +51,16 @@ function App() {
           </FormContextProvider>
         }
       />
-      <Route path="/addInformation" element={<AddInformation />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
+    
       {/* <Route path="/profile" element={<Profile />} /> */}
     </Routes>
+    <NavBar />
+    <Routes>
+    <Route path="/addInformation" element={<AddInformation />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
+    </Routes>
+    </>
   );
 }
 

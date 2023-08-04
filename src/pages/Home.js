@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className="bodyAllPages">
       <div className="px-lg-4 mx-lg-3">
-        <NavBar />
+        {/* <NavBar /> */}
 
         {/* <LoadingPage loading={loading}/> */}
         <div className="row d-flex justify-content-center">

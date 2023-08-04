@@ -27,7 +27,7 @@ const CardActive = ({ id }) => {
        </div>
      </div>
       )
-      })
+      }).slice(0, 4)
     }
     
      

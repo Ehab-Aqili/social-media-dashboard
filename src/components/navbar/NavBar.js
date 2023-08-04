@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { KeyLang } from "../../util/KeyLang";
 import DarkMode from "../DarkMode/DarkMode";
 import logo from "../../assets/icons/logo_text.svg";
+import axios from "axios";
 
 const NavBar = () => {
   const [results, setResults] = useState([]);
@@ -26,23 +27,38 @@ const NavBar = () => {
   const [themePopup, setThemePopup] = useState(false);
   const { t } = useTranslation();
 
+  const [input, setInput] = useState("");
+
+  const handleInput = async (e) => {
+    setInput(e.target.value);
+    const response = await axios.get(`http://localhost:8080/user/search/${input}`).catch(
+      (error) => {
+        console.log(error)
+      }
+    )
+   
+    // console.log(response);
+    setResults(response.data);
+    // console.log(results[0].username)
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-sm custom_nav">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/">
             <img src={logo} alt="logo" style={{ width: "120px" }} />
-          </Link>
+          </NavLink>
           <ul className="navbar-nav custom-items">
-            <li className="nav-item custom_item_nav custom_active  d-flex justify-content-center">
-              <Link className="nav-link " to="/home">
+            <li className="nav-item custom_item_nav d-flex justify-content-center">
+              <NavLink className="nav-link" to="/home">
                 <i className="fa-solid fa-house"></i>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item custom_item_nav d-flex justify-content-center">
-              <Link className="nav-link" to="/profile">
+              <NavLink className="nav-link" to="/profile">
                 <i className="fa-solid fa-user"></i>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item custom_item_nav d-flex justify-content-center">
               <Link
@@ -77,15 +93,40 @@ const NavBar = () => {
           >
             <form className="search_bar_nav" role="search">
               <div className="">
-                <SearchBar setResults={setResults} value={value} />
-                {results && results.length > 0 && (
+                {/* <SearchBar setResults={setResults} value={value} /> */}
+                <div className="input_wrapper">
+                  {PathIcons.search}
+                  <input
+                    className="search_bar me-2"
+                    type="search"
+                    placeholder="Search"
+                    onChange={handleInput}
+                  ></input>
+                </div>
+
+                {results.map((search, index) => {
+                  return (
+                    <Link
+                      className="m-2 text-decoration-none"
+                      // to={`/profile?id=${encodeURIComponent(result.id)}`}
+                      key={index}
+                      // onClick={() => setSearch(id)}
+                    >
+                      <div className="d-flex align-items-center gap-2">
+                        <ImageUser image="" width={35} />
+                        <span className="result_search_name">{`${search.username}`}</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+                {/* {results && results.length > 0 && (
                   <SearchResultList
                     results={results}
                     setResult={setResults}
-                  // setValue={setValue}
-                  />
-                )}
-                { }
+                    // setValue={setValue}
+                  /> 
+                )} */}
+                {}
               </div>
             </form>
             <span className="mx-3">{userData[0].name}</span>
