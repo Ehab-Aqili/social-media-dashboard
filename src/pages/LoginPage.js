@@ -71,7 +71,7 @@ const LoginPage = () => {
     setError(null)
   };
   return (
-    <div className="align-items-center">
+    <div className="align-items-center" style={{ maxHeight: "100vh", height: "100vh"}}>
       <div className="container register__page mt-4">
         <div className="row d-flex align-items-center pt-5 d-flex justify-content-around">
           {/* <!-- image --> */}

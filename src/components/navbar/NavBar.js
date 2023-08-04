@@ -172,7 +172,7 @@ const NavBar = () => {
                   onPress={() => setSettingPopup(true)}
                 />
                 <PopupEditProfile
-                 t rigger={settingPopup}
+                  trigger={settingPopup}
                   setTrigger={setSettingPopup}
                   title={t(KeyLang.setting)}
                 >
@@ -196,11 +196,13 @@ const NavBar = () => {
                   onPress={() => setThemePopup(true)}
                 />
                 {/* ***----------------- DropdownMenu Sign Out -----------------*** */}
-                <DropdownMenu
+                {/* <DropdownMenu
                   text={t(KeyLang.SignOut)}
                   to={"/"}
-                  icon={PathIcons.signOut}
+                  icon=
                 />
+         */}
+                <li className="mb-2"><Link to="/login" onClick={()=> sessionStorage.clear()}  className="dropdown-item custom_item_dropDown"> <span className="d-flex align-items-center gap-2" >{PathIcons.signOut} <span>Sign Out</span> </span>  </Link> </li>
               </ul>
             </div>
           </div>
