@@ -17,6 +17,7 @@ function AddPost({ id }) {
   // buttonPopup
   //   ? (document.body.style.overflow = "hidden")
   //   : (document.body.style.overflow = "auto");
+  
   return (
     <div className="row container_add_post">
       <div className="header_add_post d-flex gap-3">
