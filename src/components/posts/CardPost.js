@@ -14,10 +14,11 @@ const CardPost = ({ id }) => {
 
   // console.log(data.username);
   return (
-    <div className="row container_post">
-      <div className="col-12 p-4">
+        <>
         {post.map((data, index) => {
           return (
+            <div className="row container_post">
+      <div className="col-12 p-4">
             <div key={index}>
               <div className="header_post d-flex align-items-center mt-5 gap-3">
                 <ImageUser image={postData.image} width={60} />
@@ -27,17 +28,17 @@ const CardPost = ({ id }) => {
                 </div>
                 <span className="menu_dots_post">{PathIcons.menuDots}</span>
               </div>
+                <p className="pt-3 mb-2">{data.text}</p>
               <div className="body_post py-4">
                 {data.img !== "" ? (
-                  <img src={data.status.img} alt="image_post" />
+                  <img src={data.img} alt="image_post" />
                 ) : null}
-                <p className="pt-3 mb-2">{data.text}</p>
               </div>
               <div className="footer_post">
                 <div className="d-flex gap-4">
                   <div className="like-post d-flex align-items-center gap-2">
                     {PathIcons.like}
-                    {` ${data.like}K`}
+                    {` ${data.like}`}
                   </div>
                   <div className="comment-post d-flex align-items-center gap-2">
                     {PathIcons.comment}
@@ -47,10 +48,11 @@ const CardPost = ({ id }) => {
                 <InputField />
               </div>
             </div>
+              </div>
+              </div>
           );
         }).reverse()}
-      </div>
-    </div>
+   </>
   );
 };
 

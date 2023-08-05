@@ -39,53 +39,50 @@ function App() {
   // .*** --------------------return--------------------- ***
   return (
     <>
-     
-    {location.pathname === "/login" || location.pathname  === "/" ?
-    <> 
-      <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/"
-        element={
-          <FormContextProvider>
-            <RegisterContextProvider>
-              <Register />
-            </RegisterContextProvider>
-          </FormContextProvider>
-        }
-      />
-    </Routes>
-      <Routes>
-      <Route path="/addInformation" element={<AddInformation />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>  
-    </>
-    :
-    <> 
-    <Routes>
-    <Route path="/login" element={<LoginPage />} />
-    <Route
-      path="/"
-      element={
-        <FormContextProvider>
-          <RegisterContextProvider>
-            <Register />
-          </RegisterContextProvider>
-        </FormContextProvider>
-      }
-    />
-  </Routes>
-  <NavBar />
-  <Routes>
-  <Route path="/addInformation" element={<AddInformation />} />
-    <Route path="/home" element={<Home />} />
-    <Route path="/profile" element={<Profile />} />
-  </Routes>
-    </>
-  }
-
-    
+      {location.pathname === "/login" || location.pathname === "/" ? (
+        <>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/"
+              element={
+                <FormContextProvider>
+                  <RegisterContextProvider>
+                    <Register />
+                  </RegisterContextProvider>
+                </FormContextProvider>
+              }
+            />
+          </Routes>
+          <Routes>
+            <Route path="/addInformation" element={<AddInformation />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </>
+      ) : (
+        <>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/"
+              element={
+                <FormContextProvider>
+                  <RegisterContextProvider>
+                    <Register />
+                  </RegisterContextProvider>
+                </FormContextProvider>
+              }
+            />
+            <NavBar />
+          </Routes>
+          <Routes>
+            <Route path="/addInformation" element={<AddInformation />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </>
+      )}
     </>
   );
 }

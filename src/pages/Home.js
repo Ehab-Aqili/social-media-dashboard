@@ -21,35 +21,48 @@ const Home = () => {
           <div className="col-xl-6 col-lg-7 col-md-8 ">
             <div className="d-flex flex-column gap-3">
               <AddPost id={index} />
+
               <CardPost id={index} />
-
-
-
 
               {/* post one */}
               <div className="row container_post">
                 <div className="col-12 p-4">
-
                   <div key={index}>
                     <div className="header_post d-flex align-items-center mt-5 gap-3">
-                      <ImageUser image={"https://media.istockphoto.com/id/1407759041/photo/confident-happy-beautiful-hispanic-student-girl-indoor-head-shot-portrait.jpg?s=2048x2048&w=is&k=20&c=eskue6p9gwUVS2t0Kpuw6rd7Sgu5nKgxsMD6Aqaba8I="} width={60} />
+                      <ImageUser
+                        image={
+                          "https://media.istockphoto.com/id/1407759041/photo/confident-happy-beautiful-hispanic-student-girl-indoor-head-shot-portrait.jpg?s=2048x2048&w=is&k=20&c=eskue6p9gwUVS2t0Kpuw6rd7Sgu5nKgxsMD6Aqaba8I="
+                        }
+                        width={60}
+                      />
                       <div>
-                        <span className="user_name_post d-block">{"Farah Awwad"}</span>
-                        <span className="time_post d-block">{`${15} mins ago`}</span>
+                        <span className="user_name_post d-block">
+                          {"Farah Awwad"}
+                        </span>
+                        <span className="time_post d-block">{`${10} mins ago`}</span>
                       </div>
-                      <span className="menu_dots_post">{PathIcons.menuDots}</span>
+                      <span className="menu_dots_post">
+                        {PathIcons.menuDots}
+                      </span>
                     </div>
+                      <p className="pt-3 mb-2">
+                        {
+                          "Hey friends! 🙌 Let's take a moment to appreciate the little joys in life. Whether it's a beautiful sunset, a warm cup of coffee, or a good laugh with loved ones, let's embrace the simple pleasures that make life so special. 😊"
+                        }
+                      </p>
                     <div className="body_post py-4">
-                      {/* {data.img !== "" ? (
-                  <img src={data.status.img} alt="image_post" />
-                ) : null} */}
-                      <p className="pt-3 mb-2">{'Hello friends !!!'}</p>
+                      <img
+                        src={
+                          "https://jtt.com.jo/wp-content/uploads/2022/06/Amman-Abdali2-900x600.jpg"
+                        }
+                        alt="image_post"
+                      />
                     </div>
                     <div className="footer_post">
                       <div className="d-flex gap-4">
                         <div className="like-post d-flex align-items-center gap-2">
                           {PathIcons.like}
-                          {` ${"5"}K`}
+                          {` ${"532"}`}
                         </div>
                         <div className="comment-post d-flex align-items-center gap-2">
                           {PathIcons.comment}
@@ -65,27 +78,35 @@ const Home = () => {
               {/* post two */}
               <div className="row container_post">
                 <div className="col-12 p-4">
-
                   <div key={index}>
                     <div className="header_post d-flex align-items-center mt-5 gap-3">
-                      <ImageUser image={"https://www.allkindsoftherapy.com/wp-content/uploads/formidable/22/o_1ejko4nrg12b2d4k17hm1hi1ipg7-1.jpg"} width={60} />
+                      <ImageUser
+                        image={
+                          "https://www.allkindsoftherapy.com/wp-content/uploads/formidable/22/o_1ejko4nrg12b2d4k17hm1hi1ipg7-1.jpg"
+                        }
+                        width={60}
+                      />
                       <div>
-                        <span className="user_name_post d-block">{"Tasneem Shehadeh"}</span>
-                        <span className="time_post d-block">{`${15} mins ago`}</span>
+                        <span className="user_name_post d-block">
+                          {"Tasneem Shehadeh"}
+                        </span>
+                        <span className="time_post d-block">{`2 days ago`}</span>
                       </div>
-                      <span className="menu_dots_post">{PathIcons.menuDots}</span>
+                      <span className="menu_dots_post">
+                        {PathIcons.menuDots}
+                      </span>
                     </div>
+                      <p className="pt-3 mb-2">{"Hey friends! I have some amazing news to share with all of you. After months of hard work and dedication, I'm thrilled to announce the launch of my brand new website! 🚀"}</p>
                     <div className="body_post py-4">
-                      {/* {data.img !== "" ? (
-                  <img src={data.status.img} alt="image_post" />
-                ) : null} */}
-                      <p className="pt-3 mb-2">{'Hello people !!!'}</p>
+             
+            
+                  {/* <img src={data.status.img} alt="image_post" /> */}
                     </div>
                     <div className="footer_post">
                       <div className="d-flex gap-4">
                         <div className="like-post d-flex align-items-center gap-2">
                           {PathIcons.like}
-                          {` ${"7"}K`}
+                          {` ${"704"}`}
                         </div>
                         <div className="comment-post d-flex align-items-center gap-2">
                           {PathIcons.comment}

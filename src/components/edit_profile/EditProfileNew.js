@@ -139,7 +139,7 @@ const EditProfileNew = () => {
             type={"submit"}
             className={"btn btn-primary btn-custom-register text-center w-50"}
           >
-            Create account
+            Save Changes
           </button>
         </div>
       </form>
