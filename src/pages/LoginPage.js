@@ -71,7 +71,7 @@ const LoginPage = () => {
     setError(null)
   };
   return (
-    <div className="align-items-center" style={{ maxHeight: "100vh", height: "100vh"}}>
+    <div className="align-items-center">
       <div className="container register__page mt-4">
         <div className="row d-flex align-items-center pt-5 d-flex justify-content-around">
           {/* <!-- image --> */}
@@ -161,7 +161,7 @@ const LoginPage = () => {
                   Sign in
                 </button>
               </div>
-              <div className="text-center mt-4 text__sign">
+              <div className="text-center mt-4 text__sign" >
                 Don’t have an account?
                 <Link className='text-decoration-none' to={'/'}> registered!</Link>
                 {/* <a href="register.html" className="text-decoration-none">

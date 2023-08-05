@@ -1,5 +1,5 @@
 import "./css/index.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import { useTranslation } from "react-i18next";
@@ -26,6 +26,7 @@ const languages = [
   },
 ];
 function App() {
+  const location = useLocation();
   // .*** --------------------language--------------------- ***
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
@@ -38,8 +39,10 @@ function App() {
   // .*** --------------------return--------------------- ***
   return (
     <>
-   
-    <Routes>
+     
+    {location.pathname === "/login" || location.pathname  === "/" ?
+    <> 
+      <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route
         path="/"
@@ -51,15 +54,38 @@ function App() {
           </FormContextProvider>
         }
       />
-    
-      {/* <Route path="/profile" element={<Profile />} /> */}
     </Routes>
-    <NavBar />
+      <Routes>
+      <Route path="/addInformation" element={<AddInformation />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>  
+    </>
+    :
+    <> 
     <Routes>
-    <Route path="/addInformation" element={<AddInformation />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
+    <Route path="/login" element={<LoginPage />} />
+    <Route
+      path="/"
+      element={
+        <FormContextProvider>
+          <RegisterContextProvider>
+            <Register />
+          </RegisterContextProvider>
+        </FormContextProvider>
+      }
+    />
+  </Routes>
+  <NavBar />
+  <Routes>
+  <Route path="/addInformation" element={<AddInformation />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/profile" element={<Profile />} />
+  </Routes>
+    </>
+  }
+
+    
     </>
   );
 }
