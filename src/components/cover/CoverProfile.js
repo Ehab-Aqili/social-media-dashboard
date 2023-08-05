@@ -12,13 +12,13 @@ import { KeyLang } from "../../util/KeyLang";
 // temporary sol. for the image 
 import cover from "../../assets/images/cover.jpg";
 // import profilePic from "../../assets/images/img-user.png";
-const profilePic = sessionStorage.getItem('img')
+const profilePic ='https://images.unsplash.com/photo-1496360166961-10a51d5f367a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'
 console.log(profilePic)
 
 
 const CoverProfile = ({ sendData }) => {
   const data = sendData;  
-  console.log("C0ver" , data)
+  // console.log("C0ver" , data)
   const [buttonPopup, setButtonPopup] = useState(false);
   const { t } = useTranslation();
 
@@ -31,7 +31,7 @@ const CoverProfile = ({ sendData }) => {
       <div className="container_profile">
         <img className="cover_profile" src={cover} alt="cover" />
         <ImageUser
-          image={profilePic}
+          image={data.image}
           name="Mohammad"
           classImage={"image_profile"}
         />
@@ -51,7 +51,7 @@ const CoverProfile = ({ sendData }) => {
             >
               <Friends />
             </PopupFriends>
-            <div className="d-flex gap-3">
+            {/* <div className="d-flex gap-3">
               <Buttons
                 text={t(KeyLang.message)}
                 onPress={click}
@@ -62,14 +62,14 @@ const CoverProfile = ({ sendData }) => {
                 onPress={click}
                 icon={PathIcons.addFriend}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
     </div>
   );
 };
-function click() {
-  console.log(1);
-}
+// function click() {
+//   console.log(1);
+// }
 export default CoverProfile;

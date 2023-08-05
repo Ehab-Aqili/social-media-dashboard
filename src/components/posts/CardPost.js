@@ -20,7 +20,7 @@ const CardPost = ({ id }) => {
           return (
             <div key={index}>
               <div className="header_post d-flex align-items-center mt-5 gap-3">
-                <ImageUser image={"sasdd"} width={60} />
+                <ImageUser image={postData.image} width={60} />
                 <div>
                   <span className="user_name_post d-block">{postData.username}</span>
                   <span className="time_post d-block">{`${15} mins ago`}</span>

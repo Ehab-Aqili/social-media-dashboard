@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import ImageUser from "../cache_image/ImageUser";
 import DarkMode from "../DarkMode/DarkMode";
 const DropdownMenu = (props) => {
+
+const user =JSON.parse(sessionStorage.getItem('user'))
+
+
+
   return props.links ? (
     <li className="mb-2" onClick={props.onPress}>
       <Link
@@ -12,7 +17,7 @@ const DropdownMenu = (props) => {
       >
         <span className="d-flex align-items-center gap-2">
           {props.image != null ? (
-            <ImageUser image={props.image} width={30} />
+            <ImageUser image={user.image} width={30} />
           ) : (
             props.icon
           )}

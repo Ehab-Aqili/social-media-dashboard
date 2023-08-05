@@ -56,7 +56,7 @@ const CreatePost = (props) => {
     <div className="container_create_post">
       <span className={postDone ? "postDone" : 'postFail'}>{postDone ? postDone : error}</span>
       <div className="d-flex align-items-center gap-3">
-        <ImageUser image={userData[0].image} width={50} />
+        <ImageUser image={myUser.image} width={50} />
         <div className="">{myUser.username}</div>
         <div style={{ fontWeight: "bold" }}>
           {props.text}

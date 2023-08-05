@@ -47,11 +47,17 @@ const NavBar = () => {
     try {
       const response = await axios.get(`http://localhost:8080/user/search/${e.target.value}`);
       setResults(response.data);
+      console.log(results)
     } catch (error) {
       console.log("Error fetching data:", error);
       setResults([]); 
     }
   };
+
+
+
+  const user = JSON.parse(sessionStorage.getItem('user'))
+
   return (
     <>
       <nav className="navbar navbar-expand-sm custom_nav">
@@ -124,7 +130,7 @@ const NavBar = () => {
                       // onClick={() => setSearch(id)}
                     >
                       <div className="d-flex align-items-center gap-2">
-                        <ImageUser image="" width={35} />
+                        <ImageUser image={search.image} width={35} />
                         <span className="result_search_name">{`${search.username}`}</span>
                       </div>
                     </Link>
@@ -151,7 +157,7 @@ const NavBar = () => {
                 aria-expanded="false"
               >
                 <ImageUser
-                  image={userData[0].image}
+                  image={user.image}
                   name={userData[0].name}
                   width={40}
                 />
@@ -159,7 +165,7 @@ const NavBar = () => {
               <ul className="dropdown-menu dropdown-menu-end custom-dropdown-menu pt-3">
                 {/* ***----------------- DropdownMenu profile -----------------*** */}
                 <DropdownMenu
-                  text={userData[0].firstName}
+                  text={user.username}
                   to={"/profile"}
                   links={true}
                   image={userData[0].image}

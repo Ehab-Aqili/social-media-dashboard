@@ -31,7 +31,7 @@ const InformationForm = () => {
       try {
         const response = await axios.post(url, sendData).catch((err) => {
           if (err && err.response) {
-            console.log("Error: ", err.response.data.message)///////////////////
+            console.log("Error: ", err.response.data)///////////////////
             // setError(err.response.data.message)
           }
         })
@@ -39,18 +39,6 @@ const InformationForm = () => {
           console.log("register Done")
           navigate("/login");
         }
-        // Handle success response
-        // console.log(response.data);
-        // const id = response.data._id;
-        // const user = response.data;
-        // sessionStorage.setItem("Id", id);
-        // sessionStorage.setItem("user", JSON.stringify(user));
-
-        // Redirect to the home page
-        // const userData = { ...emailPass, status: "login" };
-        // localStorage.setItem("user", JSON.stringify(userData));
-        // console.log("register Done")
-        // navigate("/login");
       } catch (error) {
         // Handle error
         console.error(error);
