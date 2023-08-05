@@ -6,6 +6,7 @@ import { PathIcons } from "../../util/PathIcons";
 const CardFriend = (props) => {
   const username = props.username
   const image = props.image
+  
   return (
     <div className="card_friend col-lg-5 p-4">
       <div className=" d-flex align-items-center gap-3">
