@@ -10,22 +10,27 @@ const CardMightKnow = ({ id }) => {
 
   // const data = userData[id];
 
-  const [data, setData] = useState([])
-  const me = JSON.parse(sessionStorage.getItem('user'))
+  const [data, setData] = useState([]);
 
+  const me = JSON.parse(sessionStorage.getItem("user"));
+  const friendsUsername = me.friends.map((friend) => friend.username);
+  // console.log(me.friends);
   useEffect(() => {
     const fetchData = async () => {
       await axios.get("http://127.0.0.1:8080/user/get-users").then((res) => {
-        const newFriends = res.data.user
+        const newFriends = res.data.user;
         const newNewFriends = newFriends.filter((value) => {
-          return value.username !== me.username
-        })
+          return value.username !== me.username;
+        });
+        const newNewNewFriends = newNewFriends.filter(
+          (user) => !friendsUsername.includes(user.username)
+        );
+        setData(newNewNewFriends);
+      });
+    };
+    fetchData();
+  }, []);
 
-        setData(newNewFriends);
-      })
-    }
-    fetchData()
-  }, [])
   // console.log("data ", data)
 
   return (
@@ -33,13 +38,17 @@ const CardMightKnow = ({ id }) => {
       <h5 className="mb-3">{t(KeyLang.youMightKnow)}</h5>
       {data.map((d, index) => {
         return (
-          <div className="ItemActive" style={{ borderBottom: "none" }} key={index}>
+          <div
+            className="ItemActive"
+            style={{ borderBottom: "none" }}
+            key={index}
+          >
             <ImageUser image={d.image} width={45} />
             <div className="d-flex flex-column justify-content-center">
               <span>{d.username}</span>
             </div>
           </div>
-        )
+        );
       })}
     </div>
   );
